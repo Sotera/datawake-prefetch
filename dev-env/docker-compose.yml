@@ -88,6 +88,7 @@ search:
     - "8080:80"
   volumes:
     - ../search/:/usr/local/share/tangelo/web
+    - ../server/conf/:/usr/local/share/tangelo/conf
   command: tangelo -c "/usr/local/share/tangelo/conf/tangelo.conf"
 
 
