@@ -1,0 +1,16 @@
+# Site settings
+title: DataWake Prefetch
+baseurl: "/prefetch"
+safe: true
+lsi: false
+highlighter: pygments
+email: memex@soteradefense.com
+website: http://www.soteradefense.com
+description: "Scouringing for your information"
+
+url: "http://sotera.github.io"
+github_username:  Sotera
+repository_url: https://github.com/Sotera/datawake-prefetch
+show_downloads: true
+zip_url: https://github.com/Sotera/datawake-prefetch/zipball/master
+tar_url: https://github.com/Sotera/datawake-prefetch/tarball/master
