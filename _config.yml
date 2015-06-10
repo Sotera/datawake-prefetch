@@ -1,6 +1,6 @@
 # Site settings
 title: DataWake Prefetch
-baseurl: "/prefetch"
+baseurl: "/datawake-prefetch"
 safe: true
 lsi: false
 highlighter: pygments
