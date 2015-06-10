@@ -8,7 +8,8 @@ RUN apt-get -y install \
   python-pip
 
 RUN pip install \
-  tangelo
+  tangelo \
+  HTMLParser 
 
 # setup tangelo conf and entry point for container
 RUN adduser  --no-create-home --disabled-password --disabled-login --gecos "" tangelo
