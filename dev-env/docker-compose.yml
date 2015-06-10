@@ -85,10 +85,10 @@ dwurlrank:
 search:
   build: ../search
   ports:
-    - "80:80"
+    - "8080:80"
   volumes:
     - ../search/:/usr/local/share/tangelo/web
-  command: tangelo
+  command: tangelo -c "/usr/local/share/tangelo/conf/tangelo.conf"
 
 
 datawake:
