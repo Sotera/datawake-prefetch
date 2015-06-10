@@ -82,6 +82,14 @@ dwurlrank:
       DW_ZK_QUORUM: z01.istresearch.com:2181
   command: scala -classpath "build/libs/Search-Crawler-1.0-all.jar" com.soteradefense.datawake.trails.topology.rank.UrlRankTopology
 
+search:
+  build: ../search
+  ports:
+    - "80:80"
+  volumes:
+    - ../search/:/usr/local/share/tangelo/web
+  command: tangelo
+
 
 datawake:
   build: ../server
