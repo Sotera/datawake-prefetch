@@ -9,9 +9,11 @@ RUN apt-get -y install \
 
 RUN pip install \
   tangelo \
-  HTMLParser 
+  HTMLParser
 
 # setup tangelo conf and entry point for container
 RUN adduser  --no-create-home --disabled-password --disabled-login --gecos "" tangelo
+
+ENV PYTHONPATH /usr/local/share/tangelo/web:$PYTHONPATH
 
 WORKDIR /usr/local/share/tangelo/web

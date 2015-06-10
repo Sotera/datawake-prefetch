@@ -45,7 +45,7 @@ dwsearch:
     DW_INCOMING_URLS: memex.incoming_urls
     DW_KAFKA_CRAWLER_BROKERS: k01.istresearch.com:9092
     DW_ZK_QUORUM: z01.istresearch.com:2181
-    DW_SEARCH_API: http://54.69.102.155:8787/search/
+    DW_SEARCH_API: http://172.31.43.141:8080/search/
   volumes:
     - ../trail-specific-search:/tss
   command: scala -classpath "build/libs/Search-Crawler-1.0-all.jar" com.soteradefense.datawake.trails.topology.search.SearchTopology
