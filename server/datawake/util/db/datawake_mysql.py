@@ -409,7 +409,7 @@ def addTrail(org, name, description, userId, domain='default'):
 def listTrails(org, user='default'):
     org = org.upper()
     sql = "select name,description,unix_timestamp(created) from datawake_trails where org = %s AND created_by = %s ORDER BY created DESC"
-    rows = dbGetRows(sql, [org, domain])
+    rows = dbGetRows(sql, [org, user])
     return map(lambda x: {'name': x[0], 'description': x[1], 'created': x[2]}, rows)
 
 
