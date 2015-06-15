@@ -39,7 +39,8 @@ from datawake.util.validate.parameters import required_parameters
 @is_in_session
 def get_trails():
     org = helper.get_org()
-    user = helper.get_user()
+    user = helper.get_user().get_email()
+    tangelo.log('User: ' + user)
     return get_trails_for_user_and_org(org, user)
 
 def get_trails_for_user_and_org(org, user):
