@@ -26,10 +26,10 @@
                       {{entity.entity}}
                     </td>
                     <td ng-if="entity.relevant">
-                      {{trailEntities[entity.entity]}}
+                      {{trailEntities[entity.entity] |number:4}}
                     </td>
                     <td ng-if="!entity.relevant">
-                      -{{irrelevantEntities[entity.entity]}}
+                      -{{irrelevantEntities[entity.entity] | number:4}}
                     </td>
                   </tr>
                 </tbody>

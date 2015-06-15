@@ -20,17 +20,17 @@
                                 {{entity.entity}}
                             </td>
                             <td ng-if="entity.relevant">
-                                {{trailEntities[entity.entity]}}
+                                {{trailEntities[entity.entity] | number:4}}
                             </td>
                             <td ng-if="!entity.relevant">
-                                -{{irrelevantEntities[entity.entity]}}
+                                -{{irrelevantEntities[entity.entity] | number:4}}
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </td>
                 <td>
-                    <button class="btn btn-info" ng-click="showEntities(link);">{{link.rank}}</button>
+                    <button class="btn btn-info" ng-click="showEntities(link);" ng-bind="{{link.rank | number:4}}"></button>
                 </td>
             </tr>
             </tbody>
