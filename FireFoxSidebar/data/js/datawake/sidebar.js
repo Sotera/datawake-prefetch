@@ -24,12 +24,11 @@ sidebarApp.controller("SidebarCtrl", function($scope, $document, $interval) {
     $scope.datawake.domain = {}
     $scope.datawake.domain.name = 'memex';
     $scope.datawake.trail = {}
-
-    addon.port.emit("refreshTrails", $scope.datawake.domain);
-
     $scope.current_url = prefs.current_url;
     $scope.versionNumber = prefs.versionNumber;
     $scope.user = prefs.userInfo;
+
+    addon.port.emit("refreshTrails", $scope.user);
   });
 
   addon.port.on("infosaved", function(datawakeinfo) {

@@ -37,17 +37,15 @@ from datawake.util.validate.parameters import required_parameters
 # Perform a starts-with search for trails
 #
 @is_in_session
-@required_parameters(['domain'])
-def get_trails(domain):
+def get_trails():
     org = helper.get_org()
-    return get_trails_for_domain_and_org(org, domain)
+    user = helper.get_user()
+    return get_trails_for_user_and_org(org, user)
 
-
-def get_trails_for_domain_and_org(org, domain):
-    trails = db.listTrails(org, domain)
+def get_trails_for_user_and_org(org, user):
+    trails = db.listTrails(org, user)
     response = dict(trails=trails)
     return json.dumps(response)
-
 
 @is_in_session
 @required_parameters(['domain', 'trail', 'entity'])
@@ -130,7 +128,6 @@ post_actions = {
     'deleteLink': delete_link_from_trail,
     'urlEntities': get_url_entities
 }
-
 
 @tangelo.restful
 def post(action, *args, **kwargs):
