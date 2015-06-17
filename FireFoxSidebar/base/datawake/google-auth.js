@@ -1,4 +1,4 @@
-var OAuthConsumer = require("oauthorizer/oauthconsumer").OAuthConsumer;
+var OAuthConsumer = require("oauthorizer/lib/oauthconsumer");
 var requestHelper = require("./request-helper");
 var addOnPrefs = require("sdk/simple-prefs").prefs;
 
@@ -52,4 +52,3 @@ function signOut(callback) {
 function getLoggedInUser(callback) {
     requestHelper.get(addOnPrefs.datawakeDeploymentUrl + "/session", callback);
 }
-
