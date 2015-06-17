@@ -18,9 +18,10 @@ exports.createTrail = createTrail;
  * @param domain_id
  * @param callback
  */
-function getTrails(callback) {
+function getTrails(domain, callback) {
   var url = addOnPrefs.datawakeDeploymentUrl + "/trails/get";
   var post_data = JSON.stringify({
+    domain: domain.name
   });
   requestHelper.post(url, post_data, function(response) {
     callback(response.json);

@@ -37,16 +37,15 @@ from datawake.util.validate.parameters import required_parameters
 # Perform a starts-with search for trails
 #
 @is_in_session
-def get_trails():
+@required_parameters(['domain'])
+def get_trails(domain):
     org = helper.get_org()
-    user = helper.get_user().get_email()
-    tangelo.log('User: ' + user)
-    return get_trails_for_user_and_org(org, user)
+    return get_trails_for_domain_and_org(org, domain)
 
-def get_trails_for_user_and_org(org, user):
-    trails = db.listTrails(org, user)
-    response = dict(trails=trails)
-    return json.dumps(response)
+def get_trails_for_domain_and_org(org, domain):
+     trails = db.listTrails(org, domain)
+     response = dict(trails=trails)
+     return json.dumps(response)
 
 @is_in_session
 @required_parameters(['domain', 'trail', 'entity'])

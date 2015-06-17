@@ -168,9 +168,9 @@ function launchDatawakeSidebar() {
           clearAllState()
         });
       });
-      worker.port.on("refreshTrails", function(user) {
-        console.debug("Getting trails for " + user + "!");
-        service.getTrails(function(response) {
+      worker.port.on("refreshTrails", function(domain) {
+        console.debug("Getting trails for " + domain + "!");
+        service.getTrails(domain, function(response) {
           if (response.status != 501) {
             worker.port.emit("trails", response.trails);
           } else {
