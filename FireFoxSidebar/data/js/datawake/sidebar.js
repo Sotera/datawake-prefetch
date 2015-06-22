@@ -27,8 +27,7 @@ sidebarApp.controller("SidebarCtrl", function($scope, $document, $interval) {
     $scope.current_url = prefs.current_url;
     $scope.versionNumber = prefs.versionNumber;
     $scope.user = prefs.userInfo;
-
-    addon.port.emit("refreshTrails", $scope.user);
+    addon.port.emit("refreshTrails", $scope.datawake.domain);
   });
 
   addon.port.on("infosaved", function(datawakeinfo) {
