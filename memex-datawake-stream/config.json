@@ -11,7 +11,7 @@
                 "path": "/tmp/streamparse",
                 "max_bytes": 1000000,
                 "backup_count": 10,
-                "level": "info"
+                "level": "debug"
             },
             "virtualenv_root": "/tmp/virtualenvs/"
         }

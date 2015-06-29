@@ -27,12 +27,12 @@
         )
 
         ;; LOOK AHEAD
-        "datawake-lookahead-spout" (python-spout-spec
-            options
-            "datawakestreams.kafka_spouts.KafkaDatawakeLookaheadSpout"
-            ["url", "status", "headers", "flags", "body", "timestamp", "source","context"]
-            :p 1
-        )
+;        "datawake-lookahead-spout" (python-spout-spec
+;            options
+;            "datawakestreams.kafka_spouts.KafkaDatawakeLookaheadSpout"
+;            ["url", "status", "headers", "flags", "body", "timestamp", "source","context"]
+;            :p 1
+;        )
 
 
     }
@@ -115,47 +115,47 @@
 
 
 
-         "lookahead-email-bolt" (python-bolt-spec
-            options
-            {"datawake-lookahead-spout"  :shuffle }
-            "datawakestreams.extractors.email_bolt.EmailBolt"
-            ["attribute", "value", "extracted_raw", "extracted_metadata","url","context"]
-         )
+;         "lookahead-email-bolt" (python-bolt-spec
+;            options
+;            {"datawake-lookahead-spout"  :shuffle }
+;            "datawakestreams.extractors.email_bolt.EmailBolt"
+;            ["attribute", "value", "extracted_raw", "extracted_metadata","url","context"]
+;         )
 
 
-         "lookahead-phone-bolt" (python-bolt-spec
-             options
-             {"datawake-lookahead-spout"  :shuffle }
-             "datawakestreams.extractors.phone_bolt.PhoneBolt"
-             ["attribute", "value", "extracted_raw", "extracted_metadata","url","context"]
-         )
+;         "lookahead-phone-bolt" (python-bolt-spec
+;             options
+;             {"datawake-lookahead-spout"  :shuffle }
+;             "datawakestreams.extractors.phone_bolt.PhoneBolt"
+;             ["attribute", "value", "extracted_raw", "extracted_metadata","url","context"]
+;         )
 
 
-         "lookahead-website-bolt" (python-bolt-spec
-             options
-             {"datawake-lookahead-spout" :shuffle }
-             "datawakestreams.extractors.website_bolt.WebsiteBolt"
-             ["attribute", "value", "extracted_raw", "extracted_metadata","url","context"]
-          )
+;         "lookahead-website-bolt" (python-bolt-spec
+;             options
+;             {"datawake-lookahead-spout" :shuffle }
+;             "datawakestreams.extractors.website_bolt.WebsiteBolt"
+;             ["attribute", "value", "extracted_raw", "extracted_metadata","url","context"]
+;          )
 
-         "lookahead-mitie-bolt" (python-bolt-spec
-             options
-             {"datawake-lookahead-spout" :shuffle }
-             "datawakestreams.extractors.mitie_bolt.MitieBolt"
-             ["attribute", "value", "extracted_raw", "extracted_metadata","url","context"]
-             )
+;         "lookahead-mitie-bolt" (python-bolt-spec
+;             options
+;             {"datawake-lookahead-spout" :shuffle }
+;             "datawakestreams.extractors.mitie_bolt.MitieBolt"
+;             ["attribute", "value", "extracted_raw", "extracted_metadata","url","context"]
+;             )
 
 
-        "lookahaed-domain-writer-bolt" (python-bolt-spec
-              options
-              {"lookahead-email-bolt" :shuffle
-              "lookahead-phone-bolt" :shuffle
-              "lookahead-website-bolt" :shuffle
-              "lookahead-mitie-bolt" :shuffle }
-              "datawakestreams.domain_writer_bolt.DomainWriterBolt"
-              []
-              :p 1
-              )
+;        "lookahaed-domain-writer-bolt" (python-bolt-spec
+;              options
+;              {"lookahead-email-bolt" :shuffle
+;              "lookahead-phone-bolt" :shuffle
+;              "lookahead-website-bolt" :shuffle
+;              "lookahead-mitie-bolt" :shuffle }
+;              "datawakestreams.domain_writer_bolt.DomainWriterBolt"
+;              []
+;              :p 1
+;              )
 
 
 

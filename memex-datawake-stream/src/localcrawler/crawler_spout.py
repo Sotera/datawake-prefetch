@@ -45,8 +45,9 @@ class CrawlerSpout(Spout):
                 ))
         :return:
         """
-
-        offsetAndMessage = self.consumer.get_messages(timeout=None)[0]
-        message = offsetAndMessage.message.value
-        to_crawl = json.loads(message)
-        self.emit([to_crawl])
+        try:
+            for message in self.consumer:
+                to_crawl = json.loads(message)
+                self.emit([to_crawl])
+        except:
+            self.log(traceback.format_exc(),level='error')

@@ -5,6 +5,7 @@ import traceback
 from kafka.client import KafkaClient
 from kafka.consumer import SimpleConsumer
 from streamparse.spout import Spout
+from streamparse import storm
 
 from datawakestreams import all_settings
 
@@ -31,23 +32,28 @@ class KafkaDatawakeVisitedSpout(Spout):
             self.log(traceback.format_exc(), level='error')
             raise
 
-
     def next_tuple(self):
         """
         input:  (timestamp,org,domain,user_id,url,html)
         :return:  (url, status, headers, flags, body, timestamp, source,context)
         """
-        offsetAndMessage = self.consumer.get_messages(timeout=None)[0]
-        message = offsetAndMessage.message.value
-        message = message.decode('utf-8')
-        message = message.split('\0')
-        (timestamp, org, domain, userId, url, html) = message
-        context = {
-            'source': 'datawake-visited',
-            'domain': domain
-        }
-        self.emit([url, '', '', '', html, timestamp, context['source'], context])
+        try:
+            for message in self.consumer:
+                self.log("msg")
+                self.log(message)
+                #offsetAndMessage = self.consumer.get_messages(timeout=None)[0]
+                message = message.split('\0')
+                (timestamp, org, domain, userId, url, html) = message
+                context = {
+                    'source': 'datawake-visited',
+                    'domain': domain
+                }
+                self.emit([url, '', '', '', html, timestamp, context['source'], context])
+        except:
+            self.log(traceback.format_exc(), level='error')
 
+    def fail(self, tup_id):
+	pass 
 
 class KafkaDatawakeLookaheadSpout(Spout):
     group = 'datawake-crawler-out-consumer'.encode()
