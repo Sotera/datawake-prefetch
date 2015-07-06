@@ -7,6 +7,12 @@ DataWake Prefetch scours the internet for user provided keywords, scrapes those 
 ## How it works
 DataWake Prefetch consists of a Firefox Add-on, web server, and a distributed crawler. Searches are based on user provided keywords. The search results are then scraped and ranked based on those keywords.
 
+![Prefetch user defined entities list](img/entities.png)
+Prefetch Firefox plugin showing user defined entities.
+
+![Prefetch suggested websites](img/links.png)
+Prefetch Firefox plugin showing suggested websites.
+
 
 ## Applied Technology  ##
 This work was funded by [DARPA's
