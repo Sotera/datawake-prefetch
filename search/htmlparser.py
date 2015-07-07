@@ -33,7 +33,7 @@ class MyHTMLParser(HTMLParser):
                 tangelo.log(self.result_count)
             self.result_tag = False
         elif self.link_tag:
-            self.results.append(dict(url=self.current_link, title=data))
+            self.results.append(dict(url=self.current_link, title=data, source='google'))
             self.current_link = None
             self.link_tag = False
 
@@ -42,4 +42,3 @@ class MyHTMLParser(HTMLParser):
 
     def get_result_count(self):
         return self.result_count
-

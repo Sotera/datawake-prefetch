@@ -16,7 +16,7 @@
         <tbody>
           <tr ng-repeat="link in notVisitedLinks | orderBy:['rank']:true">
             <td style="word-wrap: break-word;min-width: 150px;max-width: 150px;">
-              <a target="_blank" ng-href="{{link.url}}">
+              <a ng-href="{{link.url}}">
                 <span ng-bind-html="link.title"></span>
               </a>
               <table class="table table-condensed" ng-show="link.show">
