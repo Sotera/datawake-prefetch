@@ -8,6 +8,7 @@ RUN apt-get -y install \
   python-pip
 
 RUN pip install \
+  beautifulsoup4\
   tangelo \
   HTMLParser
 
