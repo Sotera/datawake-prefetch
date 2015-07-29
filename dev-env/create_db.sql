@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS trail_term_rank (
   org VARCHAR(300),
   domain varchar(300),
   trail varchar(100),
-  url varchar(1024),
+  url varchar(2048),
   title varchar(1024),
   rank DOUBLE,
   pageRank INT,
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS entities_on_url (
   org VARCHAR(300),
   domain varchar(300),
   trail varchar(100),
-  url varchar(1024),
+  url varchar(2024),
   entity varchar(1024),
   relevant INT DEFAULT 0
 );

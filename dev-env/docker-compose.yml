@@ -6,7 +6,8 @@ mysql:
     - "3336:3306"
   volumes:
     - ./:/dev-env
-
+    - ./mysql/:/etc/mysql/conf.d
+  
 
 dwstream:
   build: ../memex-datawake-stream
@@ -18,8 +19,8 @@ dwstream:
       DW_DB_PASSWORD: root
       DW_DB_HOST: 172.31.43.141
       DW_DB_PORT: 3336
-      ZK_PORT_2888_TCP_ADDR: z01.istresearch.com:2181,z02.istreserach.com:2181
-      KAFKA_PORT_9092_TCP_ADDR: 54.152.161.20
+      ZK_PORT_2888_TCP_ADDR: z01.istresearch.com:2181,z02.istresearch.com:2181,z03.istresearch.com:2181
+      KAFKA_PORT_9092_TCP_ADDR: k01.istresearch.com,k02.istresearch.com,k03.istresearch.com
   volumes:
     - ../memex-datawake-stream:/memex-datawake-stream
     - ../dev-env:/dev-env
@@ -44,7 +45,7 @@ dwsearch:
     DW_USE_DISTRIBUTED: true
     DW_INCOMING_URLS: memex.incoming_urls
     DW_KAFKA_CRAWLER_BROKERS: k01.istresearch.com:9092
-    DW_ZK_QUORUM: z01.istresearch.com:2181,z02.istresearch.com:2181
+    DW_ZK_QUORUM: z01.istresearch.com:2181
     DW_SEARCH_API: http://172.31.43.141:8080/search/
   volumes:
     - ../trail-specific-search:/tss
@@ -61,8 +62,8 @@ dwurlcontents:
     DW_CRAWLER_OUT: datawake-crawler-out
     DW_USE_DISTRIBUTED: true
     DW_KAFKA_BROKERS: k01.istresearch.com:9092
-    DW_LOCAL_ZK_QUORUM: z01.istresearch.com:2181,z02.istresearch.com:2181
-    DW_ZK_QUORUM: z01.istresearch.com:2181,z02.istresearch.com:2181
+    DW_LOCAL_ZK_QUORUM: z01.istresearch.com:2181
+    DW_ZK_QUORUM: z01.istresearch.com:2181
     DW_DB_USER: root
     DW_DB_PASSWORD: root
     DW_CRAWLER_TOPIC: memex.crawled_trail-entities-search
@@ -79,7 +80,7 @@ dwurlrank:
       DW_DB_PASSWORD: root
       DW_DB_JDBC: jdbc:mysql://172.31.43.141:3336/datawake_prefetch
       DW_KAFKA_BROKERS: k01.istresearch.com:9092
-      DW_ZK_QUORUM: z01.istresearch.com:2181,z02.istreserach.com:2181
+      DW_ZK_QUORUM: z01.istresearch.com:2181
   command: scala -classpath "build/libs/Search-Crawler-1.0-all.jar" com.soteradefense.datawake.trails.topology.rank.UrlRankTopology
 
 search:
